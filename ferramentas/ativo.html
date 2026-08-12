@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestor de Ativos Corporativos | Laboratório Flex IT</title>
+  
+  <!-- Modern Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-main: #060913;
+      --bg-darker: #03050a;
+      --primary: #3b82f6;
+      --primary-glow: rgba(59, 130, 246, 0.15);
+      --primary-hover: #60a5fa;
+      --secondary: #8b5cf6;
+      --accent-emerald: #10b981;
+      --error: #ef4444;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dark: #64748b;
+      --glass-bg: rgba(15, 23, 42, 0.45);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-border-hover: rgba(59, 130, 246, 0.3);
+      --glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 8px;
+      --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Elementos de fundo luminosos */
+    .glow-bg {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(140px);
+      z-index: -1;
+      opacity: 0.45;
+    }
+    .glow-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+      left: -200px;
+      top: -100px;
+    }
+    .glow-2 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+      right: -100px;
+      top: 15%;
+    }
+
+    .container {
+      width: min(1200px, 92vw);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(3, 5, 10, 0.85), rgba(3, 5, 10, 0.65));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.25rem;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .links a {
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+    .links a:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .glass-panel {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      border-radius: var(--radius-lg);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 30%, var(--primary) 70%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .accent-text { color: var(--primary); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25);
+      width: 100%;
+    }
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .tool-container {
+      width: min(1000px, 92vw);
+      margin: 40px auto 80px;
+    }
+
+    .section-header {
+      margin-bottom: 30px;
+    }
+    .section-header h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      margin-bottom: 8px;
+    }
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .info-box {
+      background: rgba(59, 130, 246, 0.04);
+      border: 1px solid rgba(59, 130, 246, 0.15);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      margin-bottom: 30px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .info-box strong {
+      color: var(--text-main);
+    }
+
+    .grid-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .input-group label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+    }
+    .input-group input, .input-group select {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(3, 5, 10, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      transition: var(--transition-smooth);
+    }
+    .input-group input:focus, .input-group select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+
+    /* Vitrine Holográfica 3D */
+    .preview-3d-wrapper {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(3, 5, 10, 0.9));
+      border: 1px solid var(--glass-border-hover);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 380px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+    .preview-3d-wrapper::before {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .model-3d-container {
+      position: relative;
+      z-index: 1;
+      width: 180px;
+      height: 180px;
+      display: grid;
+      place-items: center;
+      perspective: 1000px;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0;
+      transform: scale(0.8) translateY(15px);
+      pointer-events: none;
+      position: absolute;
+    }
+    .model-3d-container.active {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Formas Vetoriais 3D */
+    .device-laptop {
+      width: 130px;
+      height: 90px;
+      background: linear-gradient(135deg, #334155, #1e293b);
+      border: 2px solid #64748b;
+      border-radius: 8px;
+      position: relative;
+      transform: rotateX(15deg) rotateY(-20deg);
+      transform-style: preserve-3d;
+      box-shadow: 0 15px 25px rgba(0,0,0,0.5), 0 0 15px rgba(59,130,246,0.3);
+    }
+    .device-laptop::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: -10px;
+      width: 150px;
+      height: 12px;
+      background: linear-gradient(90deg, #475569, #334155);
+      border-radius: 4px;
+      transform: rotateX(90deg);
+    }
+
+    .device-phone {
+      width: 65px;
+      height: 125px;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border: 3px solid #475569;
+      border-radius: 12px;
+      position: relative;
+      transform: rotateX(10deg) rotateY(-15deg);
+      transform-style: preserve-3d;
+      box-shadow: 0 15px 25px rgba(0,0,0,0.5), 0 0 15px rgba(139,92,246,0.3);
+    }
+    .device-phone::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 6px;
+      right: 6px;
+      bottom: 8px;
+      background: rgba(59, 130, 246, 0.15);
+      border-radius: 6px;
+      border: 1px solid rgba(59,130,246,0.3);
+    }
+
+    .device-server {
+      width: 140px;
+      height: 80px;
+      background: linear-gradient(135deg, #1e293b, #090d16);
+      border: 2px solid #334155;
+      border-radius: 6px;
+      position: relative;
+      transform: rotateX(15deg) rotateY(-20deg);
+      transform-style: preserve-3d;
+      box-shadow: 0 15px 25px rgba(0,0,0,0.5), 0 0 15px rgba(16,185,129,0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 8px;
+    }
+    .server-led {
+      width: 6px;
+      height: 6px;
+      background: var(--accent-emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-emerald);
+      display: inline-block;
+      margin-right: 6px;
+    }
+    .server-slot {
+      height: 4px;
+      background: #475569;
+      width: 80%;
+      border-radius: 2px;
+    }
+
+    .model-label {
+      margin-top: 25px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary-hover);
+      z-index: 1;
+      text-align: center;
+    }
+
+    /* Tabela */
+    .ativos-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      font-size: 0.85rem;
+    }
+    .ativos-table th, .ativos-table td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .ativos-table th {
+      color: var(--text-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.5px;
+    }
+    .ativos-table td {
+      color: var(--text-main);
+    }
+    .badge-tipo {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: bold;
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--primary-hover);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .grid-layout { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body onmousemove="interagirMouse(event)">
+  <div class="glow-bg glow-1"></div>
+  <div class="glow-bg glow-2"></div>
+
+  <header id="main-header">
+    <div class="container nav-container">
+      <div class="brand">
+        <a href="../index.html" style="display: flex; align-items: center; gap: 12px; color: inherit; text-decoration: none;">
+          <div class="logo" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 17L17 7" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M7 7h10v10" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs>
+                <linearGradient id="logo-grad" x1="7" y1="7" x2="17" y2="17" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#ffffff"/>
+                  <stop offset="100%" stop-color="#4f8cff"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <span class="brand-name">Flex <span class="accent-text">IT</span> <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal; margin-left: 8px;">/ Laboratório</span></span>
+        </a>
+      </div>
+      <nav class="links">
+        <a href="../index.html#laboratorio">← Voltar ao Site</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="section-header">
+      <h2>Gestor de Ativos <span class="gradient-text">Corporativos</span></h2>
+      <p>Demonstração inteligente de inventário patrimonial com pré-visualização holográfica de hardware em tempo real.</p>
+    </div>
+
+    <div class="info-box">
+      <strong>Governança e Proteção Patrimonial:</strong> O controle rigoroso por plaquetas de inventário e identificadores únicos (Série/IMEI) garante rastreabilidade total, fechando brechas contra <strong>desvios, furtos internos e perdas</strong>, além de otimizar o suporte e auditorias de compliance.
+    </div>
+
+    <div class="grid-layout">
+      <!-- Formulário -->
+      <div class="glass-panel" style="padding: 30px;">
+        <h3 style="font-size: 1.15rem; margin-bottom: 20px;">Cadastrar Equipamento</h3>
+        
+        <form id="formAtivo" onsubmit="cadastrarAtivo(event)" style="display: flex; flex-direction: column; gap: 18px;">
+          
+          <div class="input-group">
+            <label for="tipo">Tipo de Ativo</label>
+            <select id="tipo" onchange="atualizarTipoAtivo()">
+              <option value="Notebook / PC">Notebook / Computador</option>
+              <option value="Celular / Smartphone">Celular / Smartphone</option>
+              <option value="Servidor / Rack">Servidor / Datacenter</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="patrimonio">Nº de Inventário / Patrimônio *</label>
+            <input id="patrimonio" placeholder="Ex: PAT-84920" required />
+          </div>
+
+          <div class="input-group">
+            <label for="local">Local / Setor Atribuído *</label>
+            <input id="local" placeholder="Ex: Matriz - SP (Financeiro)" required />
+          </div>
+
+          <div class="input-group">
+            <label id="labelIdentificador" for="identificador">Número de Série (Opcional)</label>
+            <input id="identificador" placeholder="Ex: 5CG9381..." />
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Registrar Ativo</button>
+        </form>
+      </div>
+
+      <!-- Vitrine 3D -->
+      <div class="preview-3d-wrapper">
+        <span style="position: absolute; top: 20px; left: 20px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted);">Visualizador Holográfico</span>
+        
+        <!-- Laptop -->
+        <div id="modeloLaptop" class="model-3d-container active">
+          <div class="device-laptop">
+            <div style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 30px; height: 3px; background: rgba(255,255,255,0.2); border-radius: 2px;"></div>
+          </div>
+          <span class="model-label">Estação de Trabalho / Notebook</span>
+        </div>
+
+        <!-- Phone -->
+        <div id="modeloPhone" class="model-3d-container">
+          <div class="device-phone"></div>
+          <span class="model-label">Dispositivo Móvel / Smartphone</span>
+        </div>
+
+        <!-- Server -->
+        <div id="modeloServer" class="model-3d-container">
+          <div class="device-server">
+            <div style="display: flex; align-items: center;"><span class="server-led"></span><div class="server-slot"></div></div>
+            <div style="display: flex; align-items: center;"><span class="server-led" style="background: var(--primary);"></span><div class="server-slot"></div></div>
+          </div>
+          <span class="model-label">Infraestrutura / Servidor Rack</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabela -->
+    <div class="glass-panel" style="padding: 30px; margin-top: 30px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+        <h3 style="font-size: 1.15rem;">Inventário em Tempo Real</h3>
+        <span id="contadorAtivos" style="font-size: 0.8rem; color: var(--text-muted);">Total: 2 itens</span>
+      </div>
+
+      <div style="overflow-x: auto;">
+        <table class="ativos-table">
+          <thead>
+            <tr>
+              <th>Tipo</th>
+              <th>Patrimônio</th>
+              <th>Local / Setor</th>
+              <th>Série / IMEI</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody id="tabelaAtivos">
+            <tr>
+              <td><span class="badge-tipo">Notebook / PC</span></td>
+              <td>PAT-10294</td>
+              <td>Matriz - SP (Desenvolvimento)</td>
+              <td>5CD2149X</td>
+              <td><button onclick="removerLinha(this)" style="background:none; border:none; color:var(--error); cursor:pointer; font-size:0.8rem; font-weight:600;">Remover</button></td>
+            </tr>
+            <tr>
+              <td><span class="badge-tipo">Celular / Smartphone</span></td>
+              <td>PAT-33821</td>
+              <td>Filial Salvador - BA (Comercial)</td>
+              <td>IMEI: 35829104...</td>
+              <td><button onclick="removerLinha(this)" style="background:none; border:none; color:var(--error); cursor:pointer; font-size:0.8rem; font-weight:600;">Remover</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function atualizarTipoAtivo() {
+      const tipo = document.getElementById('tipo').value;
+      const label = document.getElementById('labelIdentificador');
+      const input = document.getElementById('identificador');
+      
+      const modLaptop = document.getElementById('modeloLaptop');
+      const modPhone = document.getElementById('modeloPhone');
+      const modServer = document.getElementById('modeloServer');
+
+      modLaptop.classList.remove('active');
+      modPhone.classList.remove('active');
+      modServer.classList.remove('active');
+
+      setTimeout(() => {
+        if (tipo.includes('Celular')) {
+          label.innerText = "Número IMEI (Opcional)";
+          input.placeholder = "Ex: 356984091234567";
+          modPhone.classList.add('active');
+        } else if (tipo.includes('Servidor')) {
+          label.innerText = "ID do Rack / Série (Opcional)";
+          input.placeholder = "Ex: SRV-HP-01";
+          modServer.classList.add('active');
+        } else {
+          label.innerText = "Número de Série (Opcional)";
+          input.placeholder = "Ex: 5CG9381...";
+          modLaptop.classList.add('active');
+        }
+      }, 150);
+    }
+
+    function interagirMouse(e) {
+      const wrapper = document.querySelector('.preview-3d-wrapper');
+      if(!wrapper) return;
+      const rect = wrapper.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const ativo = document.querySelector('.model-3d-container.active');
+      if (!ativo) return;
+
+      if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+        const xRot = ((y / rect.height) - 0.5) * -15;
+        const yRot = ((x / rect.width) - 0.5) * 15;
+        ativo.style.transform = `scale(1) rotateX(${xRot}deg) rotateY(${yRot}deg)`;
+      } else {
+        ativo.style.transform = `scale(1) rotateX(0deg) rotateY(0deg)`;
+      }
+    }
+
+    function cadastrarAtivo(event) {
+      event.preventDefault();
+
+      const tipo = document.getElementById('tipo').value;
+      const patrimonio = document.getElementById('patrimonio').value;
+      const local = document.getElementById('local').value;
+      let identificador = document.getElementById('identificador').value;
+
+      if (!identificador.trim()) {
+        identificador = "Não informado";
+      } else if (tipo.includes('Celular') && !identificador.toLowerCase().includes('imei')) {
+        identificador = "IMEI: " + identificador;
+      }
+
+      const tbody = document.getElementById('tabelaAtivos');
+      const tr = document.createElement('tr');
+
+      tr.innerHTML = `
+        <td><span class="badge-tipo">${tipo}</span></td>
+        <td>${patrimonio}</td>
+        <td>${local}</td>
+        <td>${identificador}</td>
+        <td><button onclick="removerLinha(this)" style="background:none; border:none; color:var(--error); cursor:pointer; font-size:0.8rem; font-weight:600;">Remover</button></td>
+      `;
+
+      tbody.prepend(tr);
+      atualizarContador();
+      document.getElementById('formAtivo').reset();
+      atualizarTipoAtivo();
+    }
+
+    function removerLinha(btn) {
+      btn.closest('tr').remove();
+      atualizarContador();
+    }
+
+    function atualizarContador() {
+      const total = document.getElementById('tabelaAtivos').rows.length;
+      document.getElementById('contadorAtivos').innerText = `Total: ${total} ${total === 1 ? 'item' : 'itens'}`;
+    }
+  </script>
+</body>
+</html>

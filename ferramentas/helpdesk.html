@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Painel de Automação de Chamados & SLA | Laboratório Flex IT</title>
+  
+  <!-- Modern Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-main: #060913;
+      --bg-darker: #03050a;
+      --primary: #3b82f6;
+      --primary-glow: rgba(59, 130, 246, 0.15);
+      --primary-hover: #60a5fa;
+      --secondary: #8b5cf6;
+      --accent-emerald: #10b981;
+      --error: #ef4444;
+      --warning: #f59e0b;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dark: #64748b;
+      --glass-bg: rgba(15, 23, 42, 0.45);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-border-hover: rgba(59, 130, 246, 0.3);
+      --glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 8px;
+      --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Elementos de fundo luminosos */
+    .glow-bg {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(140px);
+      z-index: -1;
+      opacity: 0.45;
+    }
+    .glow-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+      left: -200px;
+      top: -100px;
+    }
+    .glow-2 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+      right: -100px;
+      top: 15%;
+    }
+
+    .container {
+      width: min(1200px, 92vw);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(3, 5, 10, 0.85), rgba(3, 5, 10, 0.65));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.25rem;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .links a {
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+    .links a:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .glass-panel {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      border-radius: var(--radius-lg);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 30%, var(--primary) 70%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .accent-text { color: var(--primary); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25);
+      width: 100%;
+    }
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .tool-container {
+      width: min(1000px, 92vw);
+      margin: 40px auto 80px;
+    }
+
+    .section-header {
+      margin-bottom: 30px;
+    }
+    .section-header h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      margin-bottom: 8px;
+    }
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .info-box {
+      background: rgba(16, 185, 129, 0.04);
+      border: 1px solid rgba(16, 185, 129, 0.15);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      margin-bottom: 30px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .info-box strong {
+      color: var(--text-main);
+    }
+
+    .grid-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .input-group label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+    }
+    .input-group input, .input-group select, .input-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(3, 5, 10, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      transition: var(--transition-smooth);
+    }
+    .input-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+
+    /* Painel de Resultado do SLA */
+    .sla-result-panel {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(3, 5, 10, 0.95));
+      border: 1px solid var(--glass-border-hover);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      min-height: 420px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .metric-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .metric-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+    .metric-value {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .badge-nivel {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .nivel-n1 { background: rgba(59, 130, 246, 0.15); color: var(--primary-hover); border: 1px solid rgba(59,130,246,0.3); }
+    .nivel-n2 { background: rgba(245, 158, 11, 0.15); color: var(--warning); border: 1px solid rgba(245,158,11,0.3); }
+    .nivel-n3 { background: rgba(239, 68, 68, 0.15); color: var(--error); border: 1px solid rgba(239,68,68,0.3); }
+
+    .terminal-log {
+      background: rgba(3, 5, 10, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      font-family: monospace;
+      font-size: 0.78rem;
+      color: var(--accent-emerald);
+      height: 110px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .grid-layout { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="glow-bg glow-1"></div>
+  <div class="glow-bg glow-2"></div>
+
+  <header id="main-header">
+    <div class="container nav-container">
+      <div class="brand">
+        <a href="../index.html" style="display: flex; align-items: center; gap: 12px; color: inherit; text-decoration: none;">
+          <div class="logo" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 17L17 7" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M7 7h10v10" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs>
+                <linearGradient id="logo-grad" x1="7" y1="7" x2="17" y2="17" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#ffffff"/>
+                  <stop offset="100%" stop-color="#4f8cff"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <span class="brand-name">Flex <span class="accent-text">IT</span> <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal; margin-left: 8px;">/ Laboratório</span></span>
+        </a>
+      </div>
+      <nav class="links">
+        <a href="../index.html#laboratorio">← Voltar ao Site</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="tool-container">
+    <div class="section-header">
+      <h2>Automação de Chamados & <span class="gradient-text">Fluxo de SLA</span></h2>
+      <p>Simulador interativo de triagem de incidentes corporativos com roteamento inteligente baseado em ITIL.</p>
+    </div>
+
+    <div class="info-box">
+      <strong>Governança de Suporte (ITIL):</strong> Automatizar a triagem e o cálculo de SLA garante previsibilidade operacional, direcionando chamados complexos direto para a engenharia (N3) e resolvendo demandas comuns com agilidade na ponta (N1).
+    </div>
+
+    <div class="grid-layout">
+      <!-- Formulário de Abertura -->
+      <div class="glass-panel" style="padding: 30px;">
+        <h3 style="font-size: 1.15rem; margin-bottom: 20px;">Abrir Chamado de Incidente</h3>
+        
+        <form id="formChamado" onsubmit="processarChamado(event)" style="display: flex; flex-direction: column; gap: 16px;">
+          
+          <div class="input-group">
+            <label for="solicitante">Nome do Solicitante</label>
+            <input id="solicitante" placeholder="Ex: Carlos Eduardo (Financeiro)" required />
+          </div>
+
+          <div class="input-group">
+            <label for="categoria">Categoria da Falha</label>
+            <select id="categoria">
+              <option value="rede">Falha de Conexão / VPN / Rede</option>
+              <option value="erp">Erro Crítico de Sistema / ERP / Tasy</option>
+              <option value="hardware">Hardware / Impressora / Periféricos</option>
+              <option value="senha">Redefinição de Acesso / Domínio AD</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="prioridade">Urgência do Negócio</label>
+            <select id="prioridade">
+              <option value="baixa">Baixa (Impacto Individual)</option>
+              <option value="media">Média (Setor Parcialmente Afetado)</option>
+              <option value="alta">Alta / Crítica (Operação Interrompida)</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="descricao">Descrição do Problema</label>
+            <textarea id="descricao" placeholder="Detalhe brevemente o sintoma..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="margin-top: 5px;">Rotear e Calcular SLA</button>
+        </form>
+      </div>
+
+      <!-- Painel de Métricas e Destino do Chamado -->
+      <div class="sla-result-panel">
+        <h3 style="font-size: 1.15rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px;">Diagnóstico Automatizado</h3>
+        
+        <div class="metric-card">
+          <span class="metric-label">Nível de Suporte Alocado</span>
+          <span id="resNivel" class="badge-nivel nivel-n1">N1 - Suporte Técnico</span>
+        </div>
+
+        <div class="metric-card">
+          <span class="metric-label">Tempo Máximo de Atendimento (SLA)</span>
+          <span id="resSla" class="metric-value" style="color: var(--primary-hover);">4 Horas (Úteis)</span>
+        </div>
+
+        <div class="metric-card">
+          <span class="metric-label">Status do Roteamento</span>
+          <span id="resStatus" class="metric-value" style="color: var(--accent-emerald);">Aguardando Envio...</span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); font-weight: 700;">Log de Eventos do Sistema:</span>
+          <div id="terminalLog" class="terminal-log">
+            <span>[SYSTEM]: Motor ITIL v2.4 pronto para triagem.</span>
+            <span>[READY]: Preencha o formulário ao lado para simular.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function processarChamado(event) {
+      event.preventDefault();
+
+      const categoria = document.getElementById('categoria').value;
+      const prioridade = document.getElementById('prioridade').value;
+      
+      const elNivel = document.getElementById('resNivel');
+      const elSla = document.getElementById('resSla');
+      const elStatus = document.getElementById('resStatus');
+      const log = document.getElementById('terminalLog');
+
+      let nivelTexto = "N1 - Service Desk";
+      let nivelClasse = "badge-nivel nivel-n1";
+      let slaTempo = "4 Horas";
+
+      // Lógica inteligente de triagem ITIL baseada na categoria e urgência
+      if (prioridade === 'alta' || categoria === 'erp') {
+        nivelTexto = "N3 - Engenharia / Infraestrutura Crítica";
+        nivelClasse = "badge-nivel nivel-n3";
+        slaTempo = "30 Minutos";
+      } else if (categoria === 'rede' && prioridade === 'media') {
+        nivelTexto = "N2 - Redes & Conectividade";
+        nivelClasse = "badge-nivel nivel-n2";
+        slaTempo = "2 Horas";
+      } else if (categoria === 'senha') {
+        nivelTexto = "N1 - Atendimento Rápido";
+        nivelClasse = "badge-nivel nivel-n1";
+        slaTempo = "1 Hora";
+      }
+
+      elNivel.className = nivelClasse;
+      elNivel.innerText = nivelTexto;
+      elSla.innerText = slaTempo;
+      elStatus.innerText = "Encaminhado com Sucesso";
+      elStatus.style.color = "var(--accent-emerald)";
+
+      // Efeito de log em tempo real simulando webhook/automação
+      const timestamp = new Date().toLocaleTimeString();
+      log.innerHTML = `
+        <span>[${timestamp}] Analisando severidade do incidente...</span><br>
+        <span>[${timestamp}] Roteado para o grupo: <strong>${nivelTexto}</strong></span><br>
+        <span>[${timestamp}] SLA estipulado: <strong>${slaTempo}</strong>. Notificação enviada.</span>
+      `;
+    }
+  </script>
+</body>
+</html>

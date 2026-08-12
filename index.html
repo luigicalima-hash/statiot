@@ -1,0 +1,1420 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StatIOT | Consultoria e Operações de TI</title>
+  <meta name="description" content="A StatIOT transforma complexidade tecnológica em operações mais seguras, estáveis e eficientes, com Cloud, Segurança, Infraestrutura, Automação, Managed Services e Governança." />
+  
+  <!-- Modern Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Link -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="glow-bg glow-1"></div>
+  <div class="glow-bg glow-2"></div>
+  <div class="glow-bg glow-3"></div>
+
+  <header id="main-header">
+    <div class="container nav-container">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 17L17 7" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M7 7h10v10" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="logo-grad" x1="7" y1="7" x2="17" y2="17" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="100%" stop-color="#4f8cff"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="brand-name">Stat<span class="accent-text">IOT</span></span>
+      </div>
+
+      <nav class="links" aria-label="Navegação Principal" id="navLinks">
+        <a href="#quem-somos">Quem Somos</a>
+        <a href="#servicos">Soluções</a>
+        <a href="#portfolio">Cases</a>
+        <a href="#laboratorio">Labs</a>
+        <a href="#como-funciona">Processo</a>
+        <a href="#contato">Contato</a>
+        <a href="../helpdesk/index.html" class="nav-portal-link" target="_blank">Área do Cliente</a>
+        <a href="#contato" class="mobile-cta-link">Falar com especialista</a>
+      </nav>
+
+      <div class="cta-group">
+        <a class="btn" href="#contato">Falar com especialista</a>
+        <button class="orc-btn-trigger" aria-label="Abrir formulário de orçamento" aria-expanded="false" id="orcTop">
+          <span>Pedir orçamento</span>
+          <span class="orc-top-chev" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </span>
+        </button>
+        <button class="hamburger-menu" id="hamburgerBtn" aria-label="Abrir menu de navegação" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sliding budget form panel -->
+  <div class="orc-panel" aria-hidden="true" aria-label="Painel de orçamento" id="orcPanel">
+    <div class="orc-panel-inner">
+      <div class="orc-panel-header">
+        <div class="orc-title">Comece com um <span class="highlight-text">diagnóstico técnico</span></div>
+        <p class="orc-sub">Conte-nos o cenário e o principal desafio. A partir disso, estruturamos o próximo passo da análise.</p>
+      </div>
+
+      <form class="form" id="leadForm" novalidate>
+        <div class="input-group">
+          <label for="nome">Seu nome</label>
+          <input id="nome" name="nome" placeholder="Ex.: Maria Silva" autocomplete="name" required />
+          <span class="error-msg">Por favor, insira seu nome.</span>
+        </div>
+        <div class="input-group">
+          <label for="empresa">Empresa</label>
+          <input id="empresa" name="empresa" placeholder="Ex.: Acme Ltda" required />
+          <span class="error-msg">Por favor, insira o nome da sua empresa.</span>
+        </div>
+        <div class="input-group">
+          <label for="tema">Área de Interesse</label>
+          <select id="tema" name="tema" required>
+            <option value="">Selecione uma opção...</option>
+            <option value="Cloud / Migração">Cloud / Migração</option>
+            <option value="Segurança da Informação">Segurança da Informação</option>
+            <option value="Infraestrutura">Infraestrutura</option>
+            <option value="Automação">Automação</option>
+            <option value="Suporte & Managed Services">Suporte & Managed Services</option>
+            <option value="Governança & Documentação">Governança & Documentação</option>
+          </select>
+          <span class="error-msg">Selecione uma área de interesse.</span>
+        </div>
+        <div class="input-group">
+          <label for="mensagem">Objetivo do Projeto</label>
+          <textarea id="mensagem" name="mensagem" placeholder="Conte-nos brevemente sobre o seu desafio..." required></textarea>
+          <span class="error-msg">Descreva brevemente o seu objetivo.</span>
+        </div>
+        <div class="input-group">
+          <label for="email">E-mail Corporativo</label>
+          <input id="email" name="email" type="email" placeholder="seuemail@empresa.com" autocomplete="email" required />
+          <span class="error-msg">Insira um e-mail válido.</span>
+        </div>
+        <div class="input-group">
+          <label for="whatsapp">WhatsApp / Telefone</label>
+          <input id="whatsapp" name="whatsapp" placeholder="(xx) xxxxx-xxxx" autocomplete="tel" inputmode="tel" required />
+          <span class="error-msg">Insira seu WhatsApp com DDD.</span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="btnEnviar">Preparar diagnóstico</button>
+        <p class="form-disclaimer">Seus dados são usados apenas para entender o desafio e preparar o próximo passo da conversa.</p>
+      </form>
+    </div>
+  </div>
+
+  <main>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+
+    <div class="container hero-grid">
+
+      <div class="hero-content">
+
+        <div class="badge-pill">
+          <span class="dot-pulse" aria-hidden="true"></span>
+          <span>Consultoria • Operações de TI • Automação</span>
+        </div>
+
+        <h1>
+          Tecnologia que elimina gargalos e
+          <span class="gradient-text">acelera o crescimento.</span>
+        </h1>
+
+        <p class="lead">
+          Transformamos infraestrutura, segurança, cloud e processos
+          complexos em operações mais estáveis, automatizadas e
+          preparadas para escalar.
+        </p>
+
+        <div class="hero-actions">
+          <a
+            class="btn btn-primary btn-glow"
+            href="#orcPanel"
+            id="hero-cta-btn"
+          >
+            Solicitar diagnóstico
+          </a>
+
+          <a
+            class="btn btn-secondary"
+            href="#servicos"
+          >
+            Conhecer soluções
+          </a>
+        </div>
+
+        <div
+          class="trust-indicators"
+          aria-label="Diferenciais da StatIOT"
+        >
+
+          <div class="trust-pill">
+            <span class="check-icon">✓</span>
+            <span>Infraestrutura & Cloud</span>
+          </div>
+
+          <div class="trust-pill">
+            <span class="check-icon">✓</span>
+            <span>Segurança & Compliance</span>
+          </div>
+
+          <div class="trust-pill">
+            <span class="check-icon">✓</span>
+            <span>Automação & Integrações</span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Decorator Tech Card Graphic -->
+      <div class="hero-graphics" aria-hidden="true">
+
+        <div class="tech-card glass-panel">
+
+          <div class="card-glow-dot"></div>
+
+          <div class="tech-card-header">
+            <span class="pulse-indicator"></span>
+            <span class="tech-title">
+              OPERAÇÃO & MONITORAMENTO
+            </span>
+          </div>
+
+          <div class="tech-stat">
+            <span class="stat-number">24/7</span>
+            <span class="stat-lbl">
+              Visibilidade da infraestrutura
+            </span>
+          </div>
+
+          <div class="mini-chart">
+            <div class="bar" style="--height: 42%"></div>
+            <div class="bar" style="--height: 58%"></div>
+            <div class="bar" style="--height: 48%"></div>
+            <div class="bar" style="--height: 72%"></div>
+            <div class="bar" style="--height: 84%"></div>
+            <div class="bar" style="--height: 92%"></div>
+            <div class="bar animate-pulse" style="--height: 100%"></div>
+          </div>
+
+        </div>
+
+
+        <div class="tech-card glass-panel secondary-card">
+
+          <div class="tech-card-header">
+
+            <span class="tech-icon-circle">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </span>
+
+            <span class="tech-title">
+              SEGURANÇA & GOVERNANÇA
+            </span>
+
+          </div>
+
+          <span class="secure-badge">
+            Proteção Proativa
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+    <!-- Problem / Value Proposition Section -->
+    <section id="desafios" class="challenge-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Onde a StatIOT entra</span>
+          <h2>Sua empresa está crescendo. <span class="gradient-text">Sua TI está acompanhando?</span></h2>
+          <p>Quando a tecnologia começa a consumir tempo, aumentar riscos ou limitar a operação, o problema deixa de ser apenas técnico. É um problema de negócio.</p>
+        </div>
+
+        <div class="challenge-grid">
+          <article class="challenge-card glass-panel">
+            <span class="challenge-number">01</span>
+            <h3>Processos manuais</h3>
+            <p>Tarefas repetitivas consomem horas da equipe e aumentam a chance de falhas.</p>
+          </article>
+          <article class="challenge-card glass-panel">
+            <span class="challenge-number">02</span>
+            <h3>Infraestrutura instável</h3>
+            <p>Lentidão, indisponibilidade e gargalos prejudicam produtividade e continuidade.</p>
+          </article>
+          <article class="challenge-card glass-panel">
+            <span class="challenge-number">03</span>
+            <h3>Falta de visibilidade</h3>
+            <p>Sem monitoramento e indicadores, riscos e custos ficam escondidos até virarem incidentes.</p>
+          </article>
+          <article class="challenge-card glass-panel">
+            <span class="challenge-number">04</span>
+            <h3>TI sem estratégia</h3>
+            <p>Decisões isoladas criam complexidade e dificultam acompanhar o crescimento do negócio.</p>
+          </article>
+        </div>
+
+        <div class="diagnostic-banner glass-panel">
+          <div>
+            <span class="eyebrow">Ponto de partida</span>
+            <h3>Descubra onde sua operação pode ganhar eficiência.</h3>
+            <p>Começamos pelo diagnóstico para separar o que é crítico, importante e oportunidade de evolução.</p>
+          </div>
+          <a class="btn btn-primary" href="#orcPanel" id="challenge-cta-btn">Solicitar diagnóstico</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quem Somos Section com Mapa Neon 3D em CSS -->
+<section id="quem-somos" class="about-section">
+  <div class="container about-grid">
+
+    <div class="about-content glass-panel" style="padding: 40px;">
+
+      <h2>
+        <span class="gradient-text">A História da StatIOT</span>
+      </h2>
+
+      <p style="color: var(--text-muted); margin-bottom: 16px; line-height: 1.7;">
+        A <strong style="color: var(--text);">StatIOT nasceu em São Paulo</strong> com uma visão simples: tecnologia deve reduzir complexidade, não criá-la. O projeto começou a partir da iniciativa de um jovem profissional de 21 anos apaixonado por tecnologia e determinado a transformar inovação em valor para empresas.
+      </p>
+
+      <p style="color: var(--text-muted); margin-bottom: 16px; line-height: 1.7;">
+        Desde o início, acreditamos que TI precisa estar conectada ao negócio. Por isso, buscamos transformar <strong style="color: var(--text);">processos complexos em operações mais simples, seguras, previsíveis e preparadas para crescer.</strong>
+      </p>
+
+      <p style="color: var(--text-muted); margin-bottom: 16px; line-height: 1.7;">
+        É por isso que combinamos <strong style="color: var(--text);">automação inteligente, metodologias ágeis e soluções sob medida</strong> para transformar operações complexas em processos mais simples, eficientes, estáveis e preparados para escalar.
+      </p>
+
+      <p style="color: var(--text-muted); line-height: 1.7;">
+        Mais do que implementar tecnologia, buscamos <strong style="color: var(--text);">criar impacto real</strong>: devolver tempo às equipes, reduzir tarefas repetitivas, acelerar decisões e permitir que nossos clientes concentrem sua energia no que realmente importa — <strong style="color: var(--text);">crescer, inovar e construir o futuro.</strong>
+      </p>
+
+      <div class="about-highlight">
+        <span class="pulse-dot"></span>
+        <span>Tecnologia com propósito. Automação com inteligência. Evolução contínua.</span>
+      </div>
+
+    </div>
+    
+   <div class="about-map glass-panel">
+  <div class="neon-map-wrapper">
+
+    <div class="neon-glow-effect"></div>
+
+    <svg
+      class="brazil-svg-neon"
+      viewBox="0 0 350 350"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-label="Mapa do Brasil"
+      role="img"
+    >
+      <defs>
+        <linearGradient id="brazilNeonGrad"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="100%"
+        >
+          <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.55" />
+          <stop offset="45%" stop-color="#4F6FEA" stop-opacity="0.48" />
+          <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.58" />
+        </linearGradient>
+
+        <filter id="brazilGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur
+            in="SourceGraphic"
+            stdDeviation="7"
+            result="blur"
+          />
+
+          <feColorMatrix
+            in="blur"
+            type="matrix"
+            values="
+              0 0 0 0 0.20
+              0 0 0 0 0.45
+              0 0 0 0 1
+              0 0 0 0.85 0
+            "
+            result="blueGlow"
+          />
+
+          <feMerge>
+            <feMergeNode in="blueGlow" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+
+        <filter id="brazilInnerGlow">
+          <feGaussianBlur stdDeviation="1.8" result="blur" />
+
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+
+      <!-- Contorno real do Brasil baseado na referência enviada -->
+      <path
+        class="brazil-map-path"
+        d="
+          M 120 10
+          L 116 16
+          L 100 22
+          L 84 19
+          L 89 24
+          L 89 33
+          L 95 36
+          L 91 41
+          L 74 49
+          L 64 38
+          L 59 41
+          L 56 39
+          L 43 42
+          L 43 47
+          L 48 49
+          L 40 52
+          L 40 57
+          L 47 66
+          L 44 91
+          L 27 95
+          L 19 101
+          L 17 112
+          L 12 115
+          L 10 123
+          L 19 133
+          L 19 138
+          L 25 138
+          L 30 143
+          L 39 139
+          L 42 150
+          L 59 149
+          L 77 138
+          L 83 138
+          L 85 152
+          L 90 157
+          L 124 169
+          L 128 190
+          L 144 192
+          L 143 197
+          L 150 204
+          L 146 218
+          L 147 239
+          L 162 240
+          L 165 243
+          L 166 254
+          L 175 256
+          L 172 269
+          L 177 269
+          L 180 273
+          L 179 280
+          L 167 288
+          L 151 308
+          L 157 308
+          L 178 326
+          L 180 330
+          L 177 333
+          L 180 339
+          L 215 297
+          L 219 288
+          L 218 273
+          L 221 269
+          L 252 252
+          L 270 253
+          L 273 248
+          L 279 246
+          L 280 239
+          L 291 226
+          L 292 217
+          L 298 210
+          L 302 173
+          L 311 167
+          L 319 154
+          L 337 137
+          L 339 117
+          L 334 104
+          L 321 101
+          L 299 82
+          L 279 80
+          L 266 75
+          L 264 77
+          L 257 68
+          L 236 59
+          L 227 61
+          L 226 56
+          L 213 51
+          L 210 47
+          L 213 45
+          L 213 39
+          L 206 34
+          L 199 16
+          L 187 35
+          L 176 36
+          L 166 32
+          L 160 33
+          L 159 38
+          L 149 37
+          L 134 43
+          L 126 31
+          L 130 22
+          L 129 17
+          L 125 15
+          L 126 11
+          Z
+        "
+        fill="url(#brazilNeonGrad)"
+        stroke="#3B82F6"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+        stroke-linecap="round"
+        filter="url(#brazilGlow)"
+      />
+
+      <!-- Segunda linha extremamente fina para dar acabamento -->
+      <path
+        class="brazil-map-edge"
+        d="
+          M 120 10
+          L 116 16 L 100 22 L 84 19 L 89 24 L 89 33
+          L 95 36 L 91 41 L 74 49 L 64 38 L 59 41 L 56 39
+          L 43 42 L 43 47 L 48 49 L 40 52 L 40 57 L 47 66
+          L 44 91 L 27 95 L 19 101 L 17 112 L 12 115 L 10 123
+          L 19 133 L 19 138 L 25 138 L 30 143 L 39 139 L 42 150
+          L 59 149 L 77 138 L 83 138 L 85 152 L 90 157 L 124 169
+          L 128 190 L 144 192 L 143 197 L 150 204 L 146 218 L 147 239
+          L 162 240 L 165 243 L 166 254 L 175 256 L 172 269 L 177 269
+          L 180 273 L 179 280 L 167 288 L 151 308 L 157 308 L 178 326
+          L 180 330 L 177 333 L 180 339 L 215 297 L 219 288 L 218 273
+          L 221 269 L 252 252 L 270 253 L 273 248 L 279 246 L 280 239
+          L 291 226 L 292 217 L 298 210 L 302 173 L 311 167 L 319 154
+          L 337 137 L 339 117 L 334 104 L 321 101 L 299 82 L 279 80
+          L 266 75 L 264 77 L 257 68 L 236 59 L 227 61 L 226 56
+          L 213 51 L 210 47 L 213 45 L 213 39 L 206 34 L 199 16
+          L 187 35 L 176 36 L 166 32 L 160 33 L 159 38 L 149 37
+          L 134 43 L 126 31 L 130 22 L 129 17 L 125 15 L 126 11 Z
+        "
+        fill="none"
+        stroke="#60A5FA"
+        stroke-width="0.65"
+        stroke-linejoin="round"
+        opacity="0.95"
+      />
+    </svg>
+
+    <div class="map-badge-tech">
+      <span class="pulse-dot"></span>
+      <span>São Paulo - SP</span>
+    </div>
+
+  </div>
+</div>
+    </div>
+</section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="services-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Soluções para uma TI que <span class="gradient-text">trabalha a favor do negócio</span></h2>
+          <p>Da infraestrutura à automação, estruturamos ambientes tecnológicos mais seguros, estáveis e eficientes — com soluções alinhadas ao momento e aos objetivos de cada empresa.</p>
+        </div>
+
+        <div class="grid-3">
+          <!-- Service Card 1: Cloud -->
+          <article class="service-card glass-panel" data-acc>
+            <div class="service-icon cloud-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+              </svg>
+            </div>
+            <h3>Cloud & Migração</h3>
+            <p class="service-desc">Arquitetura de nuvem híbrida/multicloud, migrações seguras e planejamento financeiro estratégico (FinOps).</p>
+            <button type="button" class="btn-accordion" aria-expanded="false" aria-label="Ver detalhes de Cloud & Migração">
+              <span>Detalhes do serviço</span>
+              <span class="acc-chevron">↓</span>
+            </button>
+            <div class="acc-content" aria-hidden="true">
+              <ul class="detail-list">
+                <li><strong>Diagnóstico:</strong> Análise de viabilidade e desenho de migração em ondas (wave planning).</li>
+                <li><strong>Arquitetura:</strong> Design resiliente focado em segurança, redes privadas, identidade e backups.</li>
+                <li><strong>Gestão de Custos:</strong> Governança (FinOps) por meio de tags estruturadas, budgets e alarmes automáticos.</li>
+                <li><strong>Modernização:</strong> Transformação de cargas de trabalho legadas para microsserviços ou Serverless.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Service Card 2: Security -->
+          <article class="service-card glass-panel" data-acc>
+            <div class="service-icon security-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </div>
+            <h3>Segurança da Informação</h3>
+            <p class="service-desc">Proteção proativa, endurecimento de sistemas, controle de acessos rígido e planos de contingência robustos.</p>
+            <button type="button" class="btn-accordion" aria-expanded="false" aria-label="Ver detalhes de Segurança da Informação">
+              <span>Detalhes do serviço</span>
+              <span class="acc-chevron">↓</span>
+            </button>
+            <div class="acc-content" aria-hidden="true">
+              <ul class="detail-list">
+                <li><strong>Hardening:</strong> Implementação de baselines de segurança baseados no CIS Controls.</li>
+                <li><strong>Gestão de Identidades:</strong> IAM estruturado com princípio de menor privilégio e MFA obrigatório.</li>
+                <li><strong>Resiliência:</strong> Backups imutáveis, testes automáticos de restauração e métricas rígidas de RTO/RPO.</li>
+                <li><strong>Resposta a Incidentes:</strong> Elaboração de playbooks de emergência, pós-mortem e planos de melhoria.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Service Card 3: Infra & Networks -->
+          <article class="service-card glass-panel" data-acc>
+            <div class="service-icon infra-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                <line x1="6" y1="18" x2="6.01" y2="18"></line>
+              </svg>
+            </div>
+            <h3>Infraestrutura & Redes</h3>
+            <p class="service-desc">Configuração física e lógica de alto desempenho, monitoramento proativo em tempo real e eliminação de gargalos.</p>
+            <button type="button" class="btn-accordion" aria-expanded="false" aria-label="Ver detalhes de Infraestrutura & Redes">
+              <span>Detalhes do serviço</span>
+              <span class="acc-chevron">↓</span>
+            </button>
+            <div class="acc-content" aria-hidden="true">
+              <ul class="detail-list">
+                <li><strong>Redes Seguras:</strong> Segmentação via VLANs, VPNs site-to-site dedicadas e políticas rígidas de firewall.</li>
+                <li><strong>Performance:</strong> Otimização de servidores, ajuste de kernels, bancos de dados e virtualizadores.</li>
+                <li><strong>Observabilidade:</strong> Coleta centralizada de logs, métricas de hardware e alertas críticos em tempo real.</li>
+                <li><strong>Manutenção:</strong> Rotinas planejadas de atualizações preventivas (patching) sem impacto no negócio.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Service Card 4: Automation -->
+          <article class="service-card glass-panel" data-acc>
+            <div class="service-icon automation-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06-.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06-.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </div>
+            <h3>Automação & Integrações</h3>
+            <p class="service-desc">Eliminação de tarefas manuais e repetitivas por meio de scripts inteligentes, pipelines CI/CD e conexões API.</p>
+            <button type="button" class="btn-accordion" aria-expanded="false" aria-label="Ver detalhes de Automação & Integrações">
+              <span>Detalhes do serviço</span>
+              <span class="acc-chevron">↓</span>
+            </button>
+            <div class="acc-content" aria-hidden="true">
+              <ul class="detail-list">
+                <li><strong>Otimização de Processos:</strong> Scripting em Bash/Python para eliminação de tarefas repetitivas.</li>
+                <li><strong>Integração de Sistemas:</strong> Desenvolvimento de pontes estáveis via APIs REST, Webhooks e filas de mensageria.</li>
+                <li><strong>Provisionamento como Código:</strong> Criação e gestão de infraestrutura automatizada usando IaC (Terraform/Ansible).</li>
+                <li><strong>Métricas de Eficiência:</strong> Relatórios detalhados com tempo economizado e redução drástica da taxa de erro.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Service Card 5: Managed Services -->
+          <article class="service-card glass-panel" data-acc>
+            <div class="service-icon managed-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <h3>Managed Services</h3>
+            <p class="service-desc">Suporte gerenciado e especializado com SLAs garantidos, monitoramento 24/7 e engenharia preventiva.</p>
+            <button type="button" class="btn-accordion" aria-expanded="false" aria-label="Ver detalhes de Managed Services">
+              <span>Detalhes do serviço</span>
+              <span class="acc-chevron">↓</span>
+            </button>
+            <div class="acc-content" aria-hidden="true">
+              <ul class="detail-list">
+                <li><strong>Suporte N1, N2 e N3:</strong> Central de suporte de alto nível técnico com tempos de resposta predefinidos (<a href="../helpdesk/index.html" target="_blank" style="color: var(--primary); text-decoration: underline; font-weight: bold;">Acessar Portal de Chamados</a>).</li>
+                <li><strong>Operação Proativa:</strong> Monitoramento proativo focado em prever e resolver gargalos antes de gerarem indisponibilidade.</li>
+                <li><strong>Melhoria Contínua:</strong> Análise periódica dos tickets para identificar e sanar problemas crônicos na raiz.</li>
+                <li><strong>Relatórios Gerenciais:</strong> Documentações completas de performance de rede, chamados e Uptime.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Service Card 6: Governance -->
+          <article class="service-card glass-panel" data-acc>
+            <div class="service-icon governance-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <h3>Governança & Documentação</h3>
+            <p class="service-desc">Estruturação de processos corporativos, auditoria técnica de conformidade e documentações inteligentes (Runbooks).</p>
+            <button type="button" class="btn-accordion" aria-expanded="false" aria-label="Ver detalhes de Governança & Documentação">
+              <span>Detalhes do serviço</span>
+              <span class="acc-chevron">↓</span>
+            </button>
+            <div class="acc-content" aria-hidden="true">
+              <ul class="detail-list">
+                <li><strong>Documentação Viva:</strong> Desenvolvimento de runbooks detalhados, mapas de topologia e manuais práticos.</li>
+                <li><strong>Métricas de Processo:</strong> Key Performance Indicators (KPIs) de TI alinhados com os objetivos do negócio.</li>
+                <li><strong>Compliance de Políticas:</strong> Auditoria preventiva de acessos para conformidade regulatória.</li>
+                <li><strong>Alinhamento Estratégico:</strong> Reuniões de alinhamento com stakeholders para expansão e modernização tecnológica.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why StatIOT -->
+    <section id="diferenciais" class="differentials-section">
+      <div class="container">
+        <div class="section-header center-align">
+          <span class="eyebrow">Por que a StatIOT?</span>
+          <h2>Tecnologia sem <span class="gradient-text">complexidade desnecessária</span></h2>
+          <p>Não começamos pela ferramenta. Começamos pelo problema, desenhamos o caminho e entregamos uma operação que possa ser mantida e evoluída.</p>
+        </div>
+
+        <div class="differentials-grid">
+          <article class="differential-card glass-panel"><span>01</span><h3>Visão estratégica</h3><p>Relacionamos decisões técnicas aos objetivos, riscos e prioridades do negócio.</p></article>
+          <article class="differential-card glass-panel"><span>02</span><h3>Execução técnica</h3><p>Planejamento e implementação caminham juntos, com testes e controle de mudanças.</p></article>
+          <article class="differential-card glass-panel"><span>03</span><h3>Documentação viva</h3><p>Runbooks, mapas e processos tornam a operação mais rastreável e sustentável.</p></article>
+          <article class="differential-card glass-panel"><span>04</span><h3>Evolução contínua</h3><p>Monitoramos o ambiente e identificamos próximos ganhos de eficiência e segurança.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio / Projetos Section -->  
+    <section id="portfolio" class="portfolio-section">  
+      <div class="container">  
+        <div class="section-header">  
+          <h2>Experiência que <span class="gradient-text">sustenta a entrega</span></h2>  
+          <p>Experiências profissionais e projetos de referência em infraestrutura, operações críticas, automação e transformação tecnológica. Onde a experiência veio de outros contextos, deixamos isso explícito.</p>  
+        </div>
+
+        <div class="portfolio-grid">
+          <article class="portfolio-card glass-panel" data-reveal>
+            <div class="card-image" style="background-image: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);">
+              <div class="case-visual" aria-hidden="true"><span>ROLLOUT & OPERAÇÕES</span><strong>StatIOT</strong></div>
+              <div class="overlay-info">
+                <div class="tech-tags">
+                  <span class="tech-tag">Automação</span>
+                  <span class="tech-tag">Rollout</span>
+                  <span class="tech-tag">Food Service</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-content">
+              <h3>Rollout de Sistemas - Rede Bob's</h3>
+              <p class="project-desc">Experiência profissional representando a Select Automação em Salvador, Feira de Santana e Ilha de Itaparica, com foco em transição tecnológica e continuidade operacional.</p>
+              <div class="project-meta">
+                <span class="meta-item">🍟 Impacto: Continuidade operacional e otimização de processos</span>
+                <span class="meta-item">📍 Praças: Salvador, Feira de Santana e Ilha de Itaparica</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="portfolio-card glass-panel" data-reveal>
+            <div class="card-image" style="background-image: linear-gradient(135deg, #ef4444 0%, #991b1b 100%);">
+              <div class="case-visual" aria-hidden="true"><span>INFRAESTRUTURA CRÍTICA</span><strong>StatIOT</strong></div>
+              <div class="overlay-info">
+                <div class="tech-tags">
+                  <span class="tech-tag">Active Directory</span>
+                  <span class="tech-tag">ERP Tasy</span>
+                  <span class="tech-tag">Infra Crítica</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-content">
+              <h3>Modernização Hospitalar - Rede D'Or (São Luiz)</h3>
+              <p class="project-desc">Experiência profissional pela HexaIT Service Solutions em ambiente hospitalar crítico, com atuação em modernização de infraestrutura, migração de domínio e ERP Tasy.</p>
+              <div class="project-meta">
+                <span class="meta-item">🏥 Resultado: Suporte crítico em áreas como Farmácia e Enfermagem</span>
+                <span class="meta-item">⚙️ Atuação: Migração AD, Impressoras e Estações Tasy</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="portfolio-card glass-panel" data-reveal>  
+            <div class="card-image" style="background-image: linear-gradient(135deg, #10b981 0%, #047857 100%);">  
+              <div class="case-visual" aria-hidden="true"><span>AUTOMAÇÃO & IaC</span><strong>StatIOT</strong></div>  
+              <div class="overlay-info">  
+                <div class="tech-tags">  
+                  <span class="tech-tag">Terraform</span>  
+                  <span class="tech-tag">Ansible</span>  
+                  <span class="tech-tag">CI/CD</span>  
+                </div>  
+              </div>  
+            </div>  
+            <div class="card-content">  
+              <h3>Automação de Infraestrutura com IaC</h3>  
+              <p class="project-desc">Arquitetura de provisionamento como código e pipelines CI/CD para tornar mudanças de infraestrutura mais reproduzíveis, auditáveis e rápidas.</p>  
+              <div class="project-meta">  
+                <span class="meta-item">🚀 Foco: reduzir erros manuais e padronizar entregas</span>  
+                <span class="meta-item">⏱️ Prazo: 6 semanas</span>  
+              </div>  
+            </div>  
+          </article>
+
+          <article class="portfolio-card glass-panel" data-reveal>  
+            <div class="card-image" style="background-image: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);">  
+              <div class="case-visual" aria-hidden="true"><span>OBSERVABILIDADE 24/7</span><strong>StatIOT</strong></div>  
+              <div class="overlay-info">  
+                <div class="tech-tags">  
+                  <span class="tech-tag">Prometheus</span>  
+                  <span class="tech-tag">Grafana</span>  
+                  <span class="tech-tag">ELK Stack</span>  
+                </div>  
+              </div>  
+            </div>  
+            <div class="card-content">  
+              <h3>Monitoramento & Observabilidade 24/7</h3>  
+              <p class="project-desc">Estruturação de observabilidade centralizada, alertas inteligentes e dashboards em tempo real para apoiar uma operação mais proativa.</p>  
+              <div class="project-meta">  
+                <span class="meta-item">📈 Foco: detectar incidentes mais cedo e acelerar a resposta</span>  
+                <span class="meta-item">⏱️ Prazo: 4 semanas</span>  
+              </div>  
+            </div>  
+          </article>
+
+          <article class="portfolio-card glass-panel" data-reveal>  
+            <div class="card-image" style="background-image: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">  
+              <div class="case-visual" aria-hidden="true"><span>MODERNIZAÇÃO & CLOUD</span><strong>StatIOT</strong></div>  
+              <div class="overlay-info">  
+                <div class="tech-tags">  
+                  <span class="tech-tag">Microserviços</span>  
+                  <span class="tech-tag">Docker</span>  
+                  <span class="tech-tag">Kubernetes</span>  
+                </div>  
+              </div>  
+            </div>  
+            <div class="card-content">  
+              <h3>Transformação Digital e Modernização</h3>  
+              <p class="project-desc">Modernização de aplicações legadas com microserviços containerizados, orquestração e arquitetura preparada para escalar.</p>  
+              <div class="project-meta">  
+                <span class="meta-item">🏗️ Foco: escalabilidade e modernização de aplicações</span>  
+                <span class="meta-item">⏱️ Prazo: 8 semanas</span>  
+              </div>  
+            </div>  
+          </article>
+
+          <article class="portfolio-card glass-panel" data-reveal>  
+            <div class="card-image" style="background-image: linear-gradient(135deg, #ec4899 0%, #be185d 100%);">  
+              <div class="case-visual" aria-hidden="true"><span>GOVERNANÇA & RUNBOOKS</span><strong>StatIOT</strong></div>  
+              <div class="overlay-info">  
+                <div class="tech-tags">  
+                  <span class="tech-tag">ITIL</span>  
+                  <span class="tech-tag">Runbooks</span>  
+                  <span class="tech-tag">KPIs</span>  
+                </div>  
+              </div>  
+            </div>  
+            <div class="card-content">  
+              <h3>Governança de TI e Documentação</h3>  
+              <p class="project-desc">Estruturação de processos, documentação viva, indicadores operacionais e práticas de governança para tornar a operação mais previsível.</p>  
+              <div class="project-meta">  
+                <span class="meta-item">📋 Foco: documentação viva e governança operacional</span>  
+                <span class="meta-item">⏱️ Prazo: 5 semanas</span>  
+              </div>  
+            </div>  
+          </article>  
+        </div>  
+      </div>  
+    </section>
+
+   <!-- Laboratório & Ferramentas Section -->
+    <section id="laboratorio" class="services-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>StatIOT <span class="gradient-text">Labs</span></h2>
+          <p>Ferramentas e utilitários interativos que traduzem problemas reais de infraestrutura, segurança e operação em experiências práticas.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="service-card glass-panel" style="display: flex; flex-direction: column;">
+            <div class="service-icon cloud-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <h3>Gestor de Ativos Corporativos</h3>
+            <p class="service-desc">Inventário com pré-visualização holográfica 3D para rastreabilidade de hardware e prevenção de perdas.</p>
+            <div style="margin-top: auto; padding-top: 15px;">
+              <a href="ferramentas/ativo.html" class="btn btn-primary btn-block" target="_blank" style="font-size: 0.82rem; padding: 10px;">Acessar Ferramenta ➔</a>
+            </div>
+          </article>
+
+          <article class="service-card glass-panel" style="display: flex; flex-direction: column;">
+            <div class="service-icon security-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <h3>Automação de Chamados & SLA</h3>
+            <p class="service-desc">Simulador de triagem de incidentes corporativos com roteamento inteligente baseado em diretrizes ITIL.</p>
+            <div style="margin-top: auto; padding-top: 15px;">
+              <a href="ferramentas/helpdesk.html" class="btn btn-primary btn-block" target="_blank" style="font-size: 0.82rem; padding: 10px;">Acessar Ferramenta ➔</a>
+            </div>
+          </article>
+
+          <article class="service-card glass-panel" style="display: flex; flex-direction: column;">
+            <div class="service-icon infra-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3>Simulador de Hardening</h3>
+            <p class="service-desc">Auditoria interativa de segurança para cálculo de índice de blindagem e compliance contra invasões.</p>
+            <div style="margin-top: auto; padding-top: 15px;">
+              <a href="ferramentas/hardening.html" class="btn btn-primary btn-block" target="_blank" style="font-size: 0.82rem; padding: 10px;">Acessar Ferramenta ➔</a>
+            </div>
+          </article>
+
+          <article class="service-card glass-panel" style="display: flex; flex-direction: column;">
+            <div class="service-icon automation-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <h3>Gerador de Scripts de Automação</h3>
+            <p class="service-desc">Criação dinâmica de rotinas customizadas em PowerShell e Bash para otimizar tarefas de infraestrutura.</p>
+            <div style="margin-top: auto; padding-top: 15px;">
+              <a href="ferramentas/automacao.html" class="btn btn-primary btn-block" target="_blank" style="font-size: 0.82rem; padding: 10px;">Acessar Ferramenta ➔</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Process Section (Horizontal Workflow Steps with Arrows) -->
+   <!-- =========================================================
+     COMO TRABALHAMOS — METODOLOGIA STATIOT
+     ========================================================= -->
+<section id="como-funciona" class="process-section">
+
+  <div class="container">
+
+    <!-- Mini identificação da metodologia -->
+    <div class="process-kicker">
+      <span class="process-kicker-icon" aria-hidden="true">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="3"></circle>
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M12 3v2"></path>
+          <path d="M12 19v2"></path>
+          <path d="M3 12h2"></path>
+          <path d="M19 12h2"></path>
+        </svg>
+      </span>
+
+      <span>METODOLOGIA STATIOT</span>
+    </div>
+
+
+    <!-- Cabeçalho -->
+    <div class="section-header process-header">
+
+      <h2>
+        Como <span class="gradient-text">Trabalhamos</span>
+      </h2>
+
+      <p>
+        Uma jornada estruturada para entender o cenário, definir prioridades,
+        executar com controle e evoluir continuamente a operação.
+      </p>
+
+    </div>
+
+
+    <!-- Linha de processo -->
+    <div class="process-grid">
+
+
+      <!-- =====================================================
+           01 — DIAGNÓSTICO
+           ===================================================== -->
+      <div class="process-step glass-panel">
+
+        <div class="process-step-top">
+
+          <span class="process-number">
+            01
+          </span>
+
+          <span class="process-icon" aria-hidden="true">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-4-4"></path>
+            </svg>
+          </span>
+
+        </div>
+
+        <h4>Diagnóstico</h4>
+
+        <p>
+          Entendemos o cenário antes de propor qualquer mudança.
+        </p>
+
+        <div class="process-mini-line">
+          <span></span>
+        </div>
+
+        <div class="step-details">
+          Identificamos riscos, gargalos, dependências e oportunidades
+          de melhoria antes de definir qualquer intervenção.
+        </div>
+
+      </div>
+
+
+      <!-- =====================================================
+           02 — ESTRATÉGIA
+           ===================================================== -->
+      <div class="process-step glass-panel">
+
+        <div class="process-step-top">
+
+          <span class="process-number">
+            02
+          </span>
+
+          <span class="process-icon" aria-hidden="true">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="9"></circle>
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v3"></path>
+              <path d="M12 19v3"></path>
+              <path d="M2 12h3"></path>
+              <path d="M19 12h3"></path>
+            </svg>
+          </span>
+
+        </div>
+
+        <h4>Estratégia</h4>
+
+        <p>
+          Transformamos o diagnóstico em prioridades, arquitetura e roadmap.
+        </p>
+
+        <div class="process-mini-line">
+          <span></span>
+        </div>
+
+        <div class="step-details">
+          Definimos prioridades, arquitetura, responsabilidades,
+          cronograma e o caminho mais seguro para alcançar os objetivos.
+        </div>
+
+      </div>
+
+
+      <!-- =====================================================
+           03 — IMPLEMENTAÇÃO
+           ===================================================== -->
+      <div class="process-step glass-panel">
+
+        <div class="process-step-top">
+
+          <span class="process-number">
+            03
+          </span>
+
+          <span class="process-icon" aria-hidden="true">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 19h14"></path>
+              <path d="M7 17 18 6"></path>
+              <path d="m14 5 5 5"></path>
+              <path d="M16 3 21 8"></path>
+            </svg>
+          </span>
+
+        </div>
+
+        <h4>Implementação</h4>
+
+        <p>
+          Executamos mudanças com planejamento, testes e controle de risco.
+        </p>
+
+        <div class="process-mini-line">
+          <span></span>
+        </div>
+
+        <div class="step-details">
+          Implantamos mudanças de forma controlada, com testes,
+          documentação, monitoramento e planos de contingência.
+        </div>
+
+      </div>
+
+
+      <!-- =====================================================
+           04 — EVOLUÇÃO
+           ===================================================== -->
+      <div class="process-step glass-panel">
+
+        <div class="process-step-top">
+
+          <span class="process-number">
+            04
+          </span>
+
+          <span class="process-icon" aria-hidden="true">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="3 17 9 11 13 15 21 7"></polyline>
+              <polyline points="15 7 21 7 21 13"></polyline>
+            </svg>
+          </span>
+
+        </div>
+
+        <h4>Evolução</h4>
+
+        <p>
+          Medimos, ajustamos e melhoramos a operação continuamente.
+        </p>
+
+        <div class="process-mini-line">
+          <span></span>
+        </div>
+
+        <div class="step-details">
+          Acompanhamos indicadores, identificamos novas oportunidades
+          e mantemos a operação preparada para os próximos desafios.
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+    <!-- Contact & Action Section -->
+    <section id="contato" class="contact-section">
+      <div class="container">
+        <div class="section-header center-align">
+          <h2>Vamos encontrar onde sua TI pode <span class="gradient-text">evoluir?</span></h2>
+          <p>Conte-nos seu desafio. A primeira conversa serve para entender o cenário, identificar oportunidades e definir o próximo passo.</p>
+        </div>
+
+        <div class="contact-cards">
+          <div class="contact-card glass-panel hover-glow-blue">
+            <div class="contact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+            </div>
+            <h3>WhatsApp</h3>
+            <p class="contact-link-wrapper"><a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer">(11) fake-xxxx</a></p>
+            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Iniciar conversa</a>
+          </div>
+          
+          <div class="contact-card glass-panel hover-glow-purple">
+            <div class="contact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <h3>E-mail</h3>
+            <p class="contact-link-wrapper"><a href="mailto:contato@seudominio.com">felipe@flexit.com</a></p>
+            <a href="mailto:contato@seudominio.com" class="btn btn-email">Enviar e-mail</a>
+          </div>
+          
+          <div class="contact-card glass-panel hover-glow-emerald">
+            <div class="contact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <h3>Atendimento</h3>
+            <p class="working-hours">Segunda a Sexta<br>09h às 18h (Horário de Brasília)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+ <footer class="site-footer">
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <!-- Marca -->
+      <div class="footer-brand">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 17L17 7"
+                stroke="url(#footer-logo-grad)"
+                stroke-width="2.5"
+                stroke-linecap="round"
+              />
+              <path
+                d="M7 7h10v10"
+                stroke="url(#footer-logo-grad)"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <defs>
+                <linearGradient
+                  id="footer-logo-grad"
+                  x1="7"
+                  y1="7"
+                  x2="17"
+                  y2="17"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop offset="0%" stop-color="#ffffff" />
+                  <stop offset="100%" stop-color="#4f8cff" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <span class="brand-name">
+            Stat<span class="accent-text">IOT</span>
+          </span>
+        </div>
+
+        <p class="footer-description">
+          Tecnologia que simplifica operações, reduz complexidade
+          e cria bases mais sólidas para empresas crescerem.
+        </p>
+
+        <div class="footer-location">
+          <span class="footer-status-dot"></span>
+          <span>São Paulo — SP, Brasil</span>
+        </div>
+      </div>
+
+
+      <!-- Soluções -->
+      <div class="footer-column">
+        <h3>Soluções</h3>
+
+        <a href="#servicos">Cloud & Migração</a>
+        <a href="#servicos">Segurança da Informação</a>
+        <a href="#servicos">Infraestrutura & Redes</a>
+        <a href="#servicos">Automação & Integrações</a>
+        <a href="#servicos">Managed Services</a>
+        <a href="#servicos">Governança & Documentação</a>
+      </div>
+
+
+      <!-- Empresa -->
+      <div class="footer-column">
+        <h3>Empresa</h3>
+
+        <a href="#quem-somos">Quem Somos</a>
+        <a href="#portfolio">Experiência & Cases</a>
+        <a href="#laboratorio">StatIOT Labs</a>
+        <a href="#como-funciona">Como Trabalhamos</a>
+        <a href="#contato">Contato</a>
+      </div>
+
+
+      <!-- Contato -->
+      <div class="footer-column footer-contact">
+        <h3>Vamos conversar?</h3>
+
+        <p>
+          Tem um desafio de TI ou quer entender onde sua operação
+          pode ganhar eficiência?
+        </p>
+
+        <!-- MANTIDOS OS DADOS DE CONTATO ATUAIS -->
+        <a href="mailto:contato@seudominio.com" class="footer-contact-link">
+          <span class="footer-contact-icon">✉</span>
+          <span>contato@seudominio.com</span>
+        </a>
+
+        <a
+          href="https://wa.me/5500000000000"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-contact-link"
+        >
+          <span class="footer-contact-icon">◉</span>
+          <span>Falar pelo WhatsApp</span>
+        </a>
+
+        <a
+          href="#orcPanel"
+          class="footer-cta"
+          id="footer-cta-btn"
+        >
+          Solicitar diagnóstico
+          <span>→</span>
+        </a>
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 StatIOT. Todos os direitos reservados.
+      </span>
+
+      <div class="footer-bottom-links">
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de Uso</a>
+      </div>
+
+    </div>
+
+  </div>
+</footer>
+
+  <!-- Submission Preview Modal -->
+  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-inner glass-panel">
+      <div class="modal-header">
+        <h3 id="modal-title">Resumo preparado</h3>
+        <button class="close-btn" id="closeModal" aria-label="Fechar modal de visualização">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        <p class="modal-intro">Confira o resumo das informações preenchidas. O formulário está em modo de pré-visualização até que o canal de atendimento seja conectado.</p>
+        <div class="summary-grid">
+          <div class="summary-item">
+            <span class="summary-label">Solicitante</span>
+            <span class="summary-val" id="mNome">—</span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-label">Empresa</span>
+            <span class="summary-val" id="mEmpresa">—</span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-label">Área / Desafio</span>
+            <span class="summary-val" id="mTema">—</span>
+          </div>
+          <div class="summary-item full-width">
+            <span class="summary-label">Objetivo Relatado</span>
+            <span class="summary-val" id="mMsg">—</span>
+          </div>
+        </div>
+        
+        <div class="modal-footer-info">
+          <p>As informações foram organizadas para a análise técnica. Antes da publicação, conecte este formulário ao endpoint, CRM ou webhook que receberá os leads.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS Script Link -->
+  <script src="script.js"></script>
+</body>
+</html>
