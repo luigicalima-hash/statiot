@@ -158,19 +158,19 @@ document.addEventListener('DOMContentLoaded', () => {
   if (error) throw error;
 
   // Envia e-mail de confirmação
-  await fetch('https://alxixhmzdluegvqexvuo.supabase.co/functions/v1/send-confirmation', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
-    },
-    body: JSON.stringify({
-      nome: leadData.nome,
-      email: leadData.email,
-      empresa: leadData.empresa,
-      tema: leadData.tema
-    })
-  });
+  await fetch('https://alxixhmzdluegvqexvuo.supabase.co/functions/v1/resend-email', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+  },
+  body: JSON.stringify({
+    nome: leadData.nome,
+    email: leadData.email,
+    empresa: leadData.empresa,
+    tema: leadData.tema
+  })
+});
 
   // Preenche o modal
   document.getElementById('mNome').textContent = leadData.nome;
