@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+      <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <!-- CSS Link -->
   <link rel="stylesheet" href="style.css" />
@@ -87,6 +87,18 @@
           <label for="empresa">Empresa</label>
           <input id="empresa" name="empresa" placeholder="Ex.: Acme Ltda" required />
           <span class="error-msg">Por favor, insira o nome da sua empresa.</span>
+        </div>
+        <div class="input-group">
+          <label for="setor">Segmento / Setor</label>
+          <select id="setor" name="setor" required>
+            <option value="">Selecione o setor...</option>
+            <option value="Varejo / Food Service">Varejo / Food Service</option>
+            <option value="Saúde / Hospitais">Saúde / Hospitais</option>
+            <option value="Indústria / Logística">Indústria / Logística</option>
+            <option value="Tecnologia / SaaS">Tecnologia / SaaS</option>
+            <option value="Outros">Outros</option>
+          </select>
+          <span class="error-msg">Selecione o setor da empresa.</span>
         </div>
         <div class="input-group">
           <label for="tema">Área de Interesse</label>
@@ -302,7 +314,7 @@
       </div>
     </section>
 
-    <!-- Quem Somos Section com Mapa Neon 3D em CSS -->
+   <!-- Quem Somos Section com Mapa Neon 3D em CSS -->
 <section id="quem-somos" class="about-section">
   <div class="container about-grid">
 
@@ -313,15 +325,15 @@
       </h2>
 
       <p style="color: var(--text-muted); margin-bottom: 16px; line-height: 1.7;">
-        A <strong style="color: var(--text);">StatIOT nasceu em São Paulo</strong> com uma visão simples: tecnologia deve reduzir complexidade, não criá-la. O projeto começou a partir da iniciativa de um jovem profissional de 21 anos apaixonado por tecnologia e determinado a transformar inovação em valor para empresas.
+        A <strong style="color: var(--text);">StatIOT nasceu em São Paulo</strong> a partir da união de um grupo de jovens profissionais apaixonados por tecnologia e movidos pelo desejo de transformar a área de TI. Desde o início, compartilhamos uma visão simples: tecnologia deve reduzir complexidade, não criá-la.
       </p>
 
       <p style="color: var(--text-muted); margin-bottom: 16px; line-height: 1.7;">
-        Desde o início, acreditamos que TI precisa estar conectada ao negócio. Por isso, buscamos transformar <strong style="color: var(--text);">processos complexos em operações mais simples, seguras, previsíveis e preparadas para crescer.</strong>
+        Acreditamos que TI precisa estar conectada ao negócio. Por isso, buscamos transformar <strong style="color: var(--text);">processos complexos em operações mais simples, seguras, previsíveis e preparadas para crescer.</strong>
       </p>
 
       <p style="color: var(--text-muted); margin-bottom: 16px; line-height: 1.7;">
-        É por isso que combinamos <strong style="color: var(--text);">automação inteligente, metodologias ágeis e soluções sob medida</strong> para transformar operações complexas em processos mais simples, eficientes, estáveis e preparados para escalar.
+        É por isso que combinamos <strong style="color: var(--text);">automação inteligente, metodologias ágeis e soluções sob medida</strong> para entregar eficiência, estabilidade e escalabilidade às empresas que confiam em nós.
       </p>
 
       <p style="color: var(--text-muted); line-height: 1.7;">
@@ -332,8 +344,9 @@
         <span class="pulse-dot"></span>
         <span>Tecnologia com propósito. Automação com inteligência. Evolução contínua.</span>
       </div>
+      </div>
 
-    </div>
+    
     
    <div class="about-map glass-panel">
   <div class="neon-map-wrapper">
@@ -789,29 +802,29 @@
           </article>
 
           <article class="portfolio-card glass-panel" data-reveal>  
-            <div class="card-image" style="background-image: linear-gradient(135deg, #10b981 0%, #047857 100%);">  
-              <div class="case-visual" aria-hidden="true"><span>AUTOMAÇÃO & IaC</span></div>  
-              <div class="overlay-info">  
-                <div class="tech-tags">  
-                  <span class="tech-tag">Terraform</span>  
-                  <span class="tech-tag">Ansible</span>  
-                  <span class="tech-tag">CI/CD</span>  
-                </div>  
-              </div>  
-            </div>  
-            <div class="card-content">  
-              <h3>Automação de Infraestrutura com IaC</h3>  
-              <p class="project-desc">Arquitetura de provisionamento como código e pipelines CI/CD para tornar mudanças de infraestrutura mais reproduzíveis, auditáveis e rápidas.</p>  
-             <div class="project-meta">
-  <span class="meta-item">
-    <i class="fas fa-rocket"></i> Foco: reduzir erros manuais e padronizar entregas
-  </span>
-  <span class="meta-item">
-    <i class="fas fa-clock"></i> Prazo: 6 semanas
-  </span>
-</div>
-            </div>  
-          </article>
+  <div class="card-image" style="background-image: linear-gradient(135deg, #10b981 0%, #047857 100%);">  
+    <div class="case-visual" aria-hidden="true"><span>AUTOMAÇÃO DE PROCESSOS</span></div>  
+    <div class="overlay-info">  
+      <div class="tech-tags">  
+        <span class="tech-tag" data-info="Automação em nuvem">Google Apps Script</span>  
+        <span class="tech-tag" data-info="Captura estruturada">Google Forms</span>  
+        <span class="tech-tag" data-info="Mensageria instantânea">WhatsApp Webhook</span>  
+      </div>  
+    </div>  
+  </div>  
+  <div class="card-content">  
+    <h3>Automação de Inscrições & Onboarding</h3>  
+    <p class="project-desc">Eliminamos o gargalo operacional de cadastros manuais criando um ecossistema integrado: do preenchimento no formulário ao disparo imediato de confirmações personalizadas via e-mail e WhatsApp.</p>  
+    <div class="project-meta">
+      <span class="meta-item">
+        <i class="fas fa-chart-line"></i> Resultado: Redução de 90% no trabalho manual da equipe
+      </span>
+      <span class="meta-item">
+        <i class="fas fa-bolt"></i> Entrega: Confirmação instantânea de dados e engajamento do lead
+      </span>
+    </div>
+  </div>  
+</article>
 
          <!-- OBSERVABILIDADE 24/7 -->
 <article class="portfolio-card glass-panel" data-reveal>
@@ -830,7 +843,7 @@
     <p class="project-desc">Estruturação de observabilidade centralizada, alertas inteligentes e dashboards em tempo real para apoiar uma operação mais proativa.</p>
     <div class="project-meta">
       <span class="meta-item"><i class="fas fa-chart-line"></i> Foco: detectar incidentes mais cedo e acelerar a resposta</span>
-      <span class="meta-item"><i class="fas fa-clock"></i> Prazo: 4 semanas</span>
+<span class="meta-item"><i class="fas fa-shield-alt"></i> Garantia: Zero surpresas e visibilidade total da infra</span>
     </div>
   </div>
 </article>
@@ -852,7 +865,7 @@
     <p class="project-desc">Modernização de aplicações legadas com microserviços containerizados, orquestração e arquitetura preparada para escalar.</p>
     <div class="project-meta">
       <span class="meta-item"><i class="fas fa-project-diagram"></i> Foco: escalabilidade e modernização de aplicações</span>
-      <span class="meta-item"><i class="fas fa-clock"></i> Prazo: 8 semanas</span>
+<span class="meta-item"><i class="fas fa-bolt"></i> Entrega: Ambiente resiliente e preparado para o crescimento</span>
     </div>
   </div>
 </article>
@@ -874,7 +887,7 @@
     <p class="project-desc">Estruturação de processos, documentação viva, indicadores operacionais e práticas de governança para tornar a operação mais previsível.</p>
     <div class="project-meta">
       <span class="meta-item"><i class="fas fa-clipboard-check"></i> Foco: documentação viva e governança operacional</span>
-      <span class="meta-item"><i class="fas fa-clock"></i> Prazo: 5 semanas</span>
+<span class="meta-item"><i class="fas fa-check-circle"></i> Padrão: Processos claros, padronizados e auditáveis</span>
     </div>
   </div>
 </article>
@@ -1405,7 +1418,9 @@
       </div>
       
       <div class="modal-body">
-        <p class="modal-intro">Confira o resumo das informações preenchidas. O formulário está em modo de pré-visualização até que o canal de atendimento seja conectado.</p>
+       <p class="modal-intro">
+  Recebemos seu diagnóstico técnico. Em breve entraremos em contato.
+</p>
         <div class="summary-grid">
           <div class="summary-item">
             <span class="summary-label">Solicitante</span>
@@ -1426,8 +1441,9 @@
         </div>
         
         <div class="modal-footer-info">
-          <p>As informações foram organizadas para a análise técnica. Antes da publicação, conecte este formulário ao endpoint, CRM ou webhook que receberá os leads.</p>
-        </div>
+<div class="modal-footer-info">
+  <p>Obrigado pelo contato! Nossa equipe técnica analisará as informações e retornará em breve.</p>
+</div>
       </div>
     </div>
   </div>
