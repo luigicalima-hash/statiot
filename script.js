@@ -242,3 +242,42 @@ if (portfolioCards.length > 0) {
 }
 
 }); // ← ESTA LINHA ESTÁ FALTANDO
+
+// --- ACCORDION DOS SERVIÇOS ---
+const accordionCards = document.querySelectorAll('[data-acc]');
+
+accordionCards.forEach(card => {
+  const btn = card.querySelector('.btn-accordion');
+  const panel = card.querySelector('.acc-content');
+  if (!btn || !panel) return;
+
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+    // Fecha todos os outros
+    accordionCards.forEach(otherCard => {
+      if (otherCard !== card) {
+        const otherBtn = otherCard.querySelector('.btn-accordion');
+        const otherPanel = otherCard.querySelector('.acc-content');
+        otherBtn?.setAttribute('aria-expanded', 'false');
+        if (otherPanel) {
+          otherPanel.style.maxHeight = null;
+          otherPanel.setAttribute('aria-hidden', 'true');
+        }
+      }
+    });
+
+    // Alterna o atual
+    if (isExpanded) {
+      btn.setAttribute('aria-expanded', 'false');
+      panel.style.maxHeight = null;
+      panel.setAttribute('aria-hidden', 'true');
+    } else {
+      btn.setAttribute('aria-expanded', 'true');
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+      panel.setAttribute('aria-hidden', 'false');
+    }
+  });
+});
